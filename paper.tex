@@ -1,4 +1,4 @@
-\documentclass[acmsmall,review]{acmart}\settopmatter{printfolios=true,printccs=false,printacmref=false}
+\documentclass[acmsmall,review, nonacm]{acmart}
 
 \setcopyright{none}
 
@@ -10,7 +10,7 @@
 
 \begin{document}
 
-\title{ASE Reflection Paper: On Methods To Generate Tests} 
+\title{ASE Reflection Paper: From Formal Verification To Test Generation} 
 
 \author{Minsung Cho}
 \affiliation{
@@ -22,10 +22,53 @@
 \email{minsung@ccs.neu.edu}          %% \email is recommended
 
 \begin{abstract}
-    As software becomes increasingly complex, the need for robust and correct tests becomes dire. But, how do we generate good tests? What software can we generate good tests for? What does it mean for a test to be good? We survey and reflect on several methods on generating tests from \textit{mathematical and logical abstractions}.
+    As software becomes increasingly complex, the assurance that software is correct becomes ever more important. Computer scientists have studied the problem of software correctness through two primary lenses: \textit{formal verification} and \textit{software testing}. This reflection papers details my attempt at understanding the landscape and development of software testing techniques as a researcher in verification, and how the two approaches have influenced one another.
 \end{abstract}
 
 \maketitle
 
+\section{Introduction}
+
+As the need for correct software increases, two approaches to writing correct software became prominent research directions.
+\begin{enumerate}
+  \item \textit{Formal verification} works with mathematical abstractions of programming language behavior to provide a mathematical proof that software behaves correctly. 
+  \item \textit{Software testing} aims to validate correct program output under certain inputs to provide empirical confidence that software behaves correctly.
+\end{enumerate}
+
+In \cite{parnas1985defense}, David Parnas argues that formal verification is not the correct approach. His argument has two main points: (1) the size of software (in lines of code) that can be verified is small compared to the size that can be robustly tested  and (2) there are some programming languages that lack semantic models that capture all the behavior that a programmer may want to verify.
+
+However, this article is nearly 40 years old! Formal verification has developed a lot since then. Although it's true that many verification tasks are computationally hard, the verification tools we have today can verify entire compilers \cite{kiam2019cakeml} and microprocessors \cite{hardin2010design}, as well as prove powerful theorems in pure mathematics. Although the fact that some languages lack an all-encompassing semantic model is still true today\footnote{whether or not this is a worthwhile research endeavor in programming languages is something I have hot takes on beyond the scope of this paper.}, the fact that testing can detect bugs about, say, concurrency, fairly reliably has not stopped some from falling through the cracks \cite{gates_2023}.
+
+My primary experience as a computer science researcher is in the field of formal methods, of which verification is one of the primary applications. As such, my ill-informed perspective on software testing is biased at best, and skeptical at worst. This reflection paper details my journey into the world of software testing--specfically, software test generation. I first ease into test generation by looking at an application of formal verification, specifically software model checking, to test generation. Then I explore property-based and metamorphic test generation techniques as a weaker application of formal verification. Lastly, I look at \texttt{KLEE}, a symbolic engine for test generation, as a marriage of the two techniques addressed in previous sections.
+
+\section{Formal verification to generate tests}
+
+In 2002, Henzinger, Jhala, Majumdar, and Sutre published a seminal paper \cite{henzinger2002lazy} that describes an \textit{abstract-check-refine} loop to verify properties of \texttt{C} programs. Without getting too far into the details, the loop, which aims to check if programs satisfies certain safety properties, does the following:
+\begin{itemize}
+  \item \textit{Abstract}: both the program and the safety properties we want to check are abstractly represented in mathematical language. In this case, the \texttt{C} program becomes a certain type of control flow graph (CFG) and the safety property becomes a logical statement.
+  \item \textit{Check}: The abstracted program is checked if it satisfies the abstracted safety property. The way we do this is the bulk of the technical material of \cite{henzinger2002lazy} and beyond the scope of this reflection paper. If we do satisfy the property, then all is well in the world and we terminate the loop.
+  \item \textit{Refine}: If the abstracted program does not satisfy the property, we query a counterexample generator (for example, an SMT solver) to give an abstract counterexample to our safety property. If this counterexample corresponds to a valid program path, then our program violates the safety property. If not, we need to to add additional predicates in our abstractions to account for this unrealizable counterexample. 
+\end{itemize}
+
+This loop seems super powerful! Thousands of papers have experimented on extending the features of this algorithm, making it more efficient, and adapting it to more programming languages and abstractions. One such paper is \cite{beyer2004generating}, where the authors use this loop to generate test suites. 
+
+The key insight in \cite{beyer2004generating} is that each abstract counterexample that corresponds to a valid program execution path can be translated into a concrete program test that a software engineer can test against. Furthermore, when the program is checked for the safety property in the \textit{check} step, we can additionally generate more examples that can serve as more tests the program should pass. The hope is that these generated test suites are robust enough that with high confidence it \textbf{fully realizes the safety properties} even if the original code is modified or extended. Furthermore, this method of test suite generation can be useful when we \textbf{do not want to reveal the source code but give strong guarantees of correctness} to a client: we can verify our software, use the verification to generate a test suite to give to a client, who can then test amongst themselves to be assured of software correctness. 
+
+So, what are the pros and cons of this method of test case generation? The main pro is the \textbf{theoretical guarantee of robustness}. As software model checking quite literally looks at all valid program execution paths, this approach will never miss an edge case. Furthermore, as long as the abstraction to CFG is sound and complete, we can reliably translate abstract examples into real program tests. However, there are several cons. The main cons are actually not within the test generation step itself, but within the \textit{abstract-check-refine} loop from earlier. There are flaws with each step of the loop:
+
+\begin{itemize}
+  \item The \textit{abstract} step suffers from the fact that CFGs \textbf{fail to capture some real-life properties} that may alter program behavior. One such problem is that it assumes infinite memory and the ability to allocate from this infinite memory.  
+  \item The \textit{check} step is a semidecidable procedure: it can \textbf{potentially run forever}. This does not seem like a very desirable property when you want to prove correctness for \textit{any} program. The authors gloss over this point, and do so in subsequent papers, which is a major flaw in this type of loop.
+  \item The \textit{refine} step is, fortunately, decidable. However, depending on what logical framework we are working in, SMT queries \textbf{can be very slow}, to the order of doubly-exponential time. Also, if the counterexample fails to be a valid program trace, the heuristics to design what new predicates should be added are empirical and, in particular, are \textbf{not universal}.  
+\end{itemize}
+
+\textit{Conclusions.} Formal verification is an extremely strong and desired tool. Knowing that your software is provably correct is the strongest possible guarantee, and generating robust test suites as a consequence of this guarantee is certainly highly desirable. However, as this test generation method relies on formal verification, it falls victim to the same problems of formal verification: the lack of a fully abstract model of all possible program behaviors and the computational inefficiency. 
+
+\section{Property-based and metamorphic testing: a middle ground}
+
+
+\section{Symbolic testing}
+
+\section{Conclusions}
 \bibliography{paper.bib}
 \end{document}

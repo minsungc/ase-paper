@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{0}
+\begin{thebibliography}{6}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -36,5 +36,82 @@
 \providecommand\bibinfo[2]{#2}
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Beyer et~al\mbox{.}(2004)]%
+        {beyer2004generating}
+\bibfield{author}{\bibinfo{person}{Dirk Beyer}, \bibinfo{person}{Adam~J
+  Chlipala}, \bibinfo{person}{Thomas~A Henzinger}, \bibinfo{person}{Ranjit
+  Jhala}, {and} \bibinfo{person}{Rupak Majumdar}.}
+  \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{Generating tests from counterexamples}. In
+  \bibinfo{booktitle}{\emph{Proceedings. 26th International Conference on
+  Software Engineering}}. IEEE, \bibinfo{pages}{326--335}.
+\newblock
+
+
+\bibitem[Gates(2023)]%
+        {gates_2023}
+\bibfield{author}{\bibinfo{person}{Dominic Gates}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{After Alaska Airlines planes bump runway while taking
+  off from Seattle, a scramble to 'pull the plug'}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://www.adn.com/alaska-news/aviation/2023/02/20/after-alaska-airlines-planes-bump-runway-a-scramble-to-pull-the-plug/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Hardin(2010)]%
+        {hardin2010design}
+\bibfield{author}{\bibinfo{person}{David~S Hardin}.}
+  \bibinfo{year}{2010}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Design and Verification of Microprocessor
+  Systems for High-Assurance Applications}}.
+\newblock \bibinfo{publisher}{Springer}.
+\newblock
+
+
+\bibitem[Henzinger et~al\mbox{.}(2002)]%
+        {henzinger2002lazy}
+\bibfield{author}{\bibinfo{person}{Thomas~A Henzinger}, \bibinfo{person}{Ranjit
+  Jhala}, \bibinfo{person}{Rupak Majumdar}, {and} \bibinfo{person}{Gregoire
+  Sutre}.} \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{Lazy abstraction}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 29th ACM SIGPLAN-SIGACT
+  symposium on Principles of programming languages}}. \bibinfo{pages}{58--70}.
+\newblock
+
+
+\bibitem[Kiam~Tan et~al\mbox{.}(2019)]%
+        {kiam2019cakeml}
+\bibfield{author}{\bibinfo{person}{Yong Kiam~Tan}, \bibinfo{person}{Magnus~O.
+  Myreen}, \bibinfo{person}{Ramana Kumar}, \bibinfo{person}{Anthony Fox},
+  \bibinfo{person}{Scott Owens}, {and} \bibinfo{person}{Michael Norrish}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{The verified CakeML compiler backend}.
+\newblock \bibinfo{journal}{\emph{Journal of Functional Programming}}
+  \bibinfo{volume}{29} (\bibinfo{year}{2019}), \bibinfo{pages}{e2}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1017/S0956796818000229}
+\showDOI{\tempurl}
+
+
+\bibitem[Parnas(1985)]%
+        {parnas1985defense}
+\bibfield{author}{\bibinfo{person}{David~Lorge Parnas}.}
+  \bibinfo{year}{1985}\natexlab{}.
+\newblock \showarticletitle{Software Aspects of Strategic Defense Systems}.
+\newblock \bibinfo{journal}{\emph{Commun. ACM}} \bibinfo{volume}{28},
+  \bibinfo{number}{12} (\bibinfo{date}{dec} \bibinfo{year}{1985}),
+  \bibinfo{pages}{1326–1335}.
+\newblock
+\showISSN{0001-0782}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/214956.214961}
+\showDOI{\tempurl}
+
 
 \end{thebibliography}

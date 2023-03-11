@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.12)  8 MAR 2023 16:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.12)  10 MAR 2023 16:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -35,6 +35,7 @@ Package acmart Info: Not using anonymous mode on input line 142.
 Package acmart Info: Not using timestamp mode on input line 150.
 Package acmart Info: Not using authordraft mode on input line 160.
 Package acmart Info: Using review mode on input line 174.
+Package acmart Info: Using nonacm mode on input line 174.
 Class acmart Info: Using format acmsmall, number 1 on input line 174.
 Class acmart Info: Using fontsize 10pt on input line 258.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/amscls/amsart.cls
@@ -583,9 +584,6 @@ File: T1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/Lin
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 10.0pt on input line 3205.
 )
-Class acmart Info: Printing folios on input line 1.
-Class acmart Info: Suppressing CCS on input line 1.
-Class acmart Info: Suppressing bibformat on input line 1.
 Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 11.
 \c@theorem=\count309
  Excluding comment 'screenonly' Include comment 'printonly' Include comment 'anonsuppress' (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
@@ -786,39 +784,72 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 28.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 9.0pt on input line 28.
- (./paper.bbl
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 5.
+(Font)              scaled to size 10.0pt on input line 30.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 5.
-
-
-Package natbib Warning: Empty `thebibliography' environment on input line 40.
-
+(Font)              scaled to size 10.0pt on input line 30.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 10.0pt on input line 34.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 40.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `LinuxLibertineT-TLF' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.3pt on input line 40.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.3pt on input line 40.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 6.2pt on input line 40.
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 42.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/inconsolata/t1zi4.fd
+File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
+)
+LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
+(Font)              scaled to size 10.0pt on input line 42.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `zi4' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 49.
+ [1.1{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 10.0pt on input line 55.
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 67.
+ [2.2] (./paper.bbl
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 8.0pt on input line 48.
+LaTeX Info: Redefining \tempurl on input line 98.
+LaTeX Info: Redefining \tempurl on input line 113.
 ) (/usr/local/texlive/2022/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 ) (/usr/local/texlive/2022/texmf-dist/tex/generic/stringenc/se-utf8.def
 File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
-)
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 31.
- [1.1{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./paper.aux)
+) [3.3] (./paper.aux)
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: E1EDB8BCDFE36C40896A61F591EEB945;178.
+(rerunfilecheck)             Checksum: EB230B1314D19F5FB28D741742EB7A50;1146.
  ) 
 Here is how much of TeX's memory you used:
- 20272 strings out of 478268
- 326587 string characters out of 5846346
- 673743 words of memory out of 5000000
- 37873 multiletter control sequences out of 15000+600000
- 557170 words of font info for 122 fonts, out of 8000000 for 9000
+ 20700 strings out of 478268
+ 336382 string characters out of 5846346
+ 692508 words of memory out of 5000000
+ 38046 multiletter control sequences out of 15000+600000
+ 618167 words of font info for 280 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 84i,15n,131p,1043b,570s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb>
-Output written on paper.pdf (1 page, 238829 bytes).
+ 84i,15n,131p,1046b,632s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
+Output written on paper.pdf (3 pages, 366817 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
- 35 compressed objects within 1 object stream
- 5 named destinations out of 1000 (max. 500000)
- 40993 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 129 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
+ 21 named destinations out of 1000 (max. 500000)
+ 78409 words of extra memory for PDF output out of 89155 (max. 10000000)
 

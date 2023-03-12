@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{6}
+\begin{thebibliography}{7}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -37,7 +37,8 @@
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
 
-\bibitem[Beyer et~al\mbox{.}(2004)]%
+\bibitem[\protect\citeauthoryear{Beyer, Chlipala, Henzinger, Jhala, and
+  Majumdar}{Beyer et~al\mbox{.}}{2004}]%
         {beyer2004generating}
 \bibfield{author}{\bibinfo{person}{Dirk Beyer}, \bibinfo{person}{Adam~J
   Chlipala}, \bibinfo{person}{Thomas~A Henzinger}, \bibinfo{person}{Ranjit
@@ -49,7 +50,19 @@
 \newblock
 
 
-\bibitem[Gates(2023)]%
+\bibitem[\protect\citeauthoryear{Fink and Bishop}{Fink and Bishop}{1997}]%
+        {fink1997property}
+\bibfield{author}{\bibinfo{person}{George Fink} {and} \bibinfo{person}{Matt
+  Bishop}.} \bibinfo{year}{1997}\natexlab{}.
+\newblock \showarticletitle{Property-based testing: a new approach to testing
+  for assurance}.
+\newblock \bibinfo{journal}{\emph{ACM SIGSOFT Software Engineering Notes}}
+  \bibinfo{volume}{22}, \bibinfo{number}{4} (\bibinfo{year}{1997}),
+  \bibinfo{pages}{74--80}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Gates}{Gates}{2023}]%
         {gates_2023}
 \bibfield{author}{\bibinfo{person}{Dominic Gates}.}
   \bibinfo{year}{2023}\natexlab{}.
@@ -63,7 +76,7 @@
 \tempurl}
 
 
-\bibitem[Hardin(2010)]%
+\bibitem[\protect\citeauthoryear{Hardin}{Hardin}{2010}]%
         {hardin2010design}
 \bibfield{author}{\bibinfo{person}{David~S Hardin}.}
   \bibinfo{year}{2010}\natexlab{}.
@@ -73,7 +86,8 @@
 \newblock
 
 
-\bibitem[Henzinger et~al\mbox{.}(2002)]%
+\bibitem[\protect\citeauthoryear{Henzinger, Jhala, Majumdar, and
+  Sutre}{Henzinger et~al\mbox{.}}{2002}]%
         {henzinger2002lazy}
 \bibfield{author}{\bibinfo{person}{Thomas~A Henzinger}, \bibinfo{person}{Ranjit
   Jhala}, \bibinfo{person}{Rupak Majumdar}, {and} \bibinfo{person}{Gregoire
@@ -84,7 +98,8 @@
 \newblock
 
 
-\bibitem[Kiam~Tan et~al\mbox{.}(2019)]%
+\bibitem[\protect\citeauthoryear{Kiam~Tan, Myreen, Kumar, Fox, Owens, and
+  Norrish}{Kiam~Tan et~al\mbox{.}}{2019}]%
         {kiam2019cakeml}
 \bibfield{author}{\bibinfo{person}{Yong Kiam~Tan}, \bibinfo{person}{Magnus~O.
   Myreen}, \bibinfo{person}{Ramana Kumar}, \bibinfo{person}{Anthony Fox},
@@ -99,7 +114,7 @@
 \showDOI{\tempurl}
 
 
-\bibitem[Parnas(1985)]%
+\bibitem[\protect\citeauthoryear{Parnas}{Parnas}{1985}]%
         {parnas1985defense}
 \bibfield{author}{\bibinfo{person}{David~Lorge Parnas}.}
   \bibinfo{year}{1985}\natexlab{}.

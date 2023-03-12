@@ -41,7 +41,7 @@ However, this article is nearly 40 years old! Formal verification has developed 
 
 My primary experience as a computer science researcher is in the field of formal methods, of which verification is one of the primary applications. As such, my ill-informed perspective on software testing is biased at best, and skeptical at worst. This reflection paper details my journey into the world of software testing--specfically, software test generation. I first ease into test generation by looking at an application of formal verification, specifically software model checking, to test generation. Then I explore property-based and metamorphic test generation techniques as a weaker application of formal verification. Lastly, I look at \texttt{KLEE}, a symbolic engine for test generation, as a marriage of the two techniques addressed in previous sections.
 
-\textit{Disclaimer.} For the duration of this paper I work with the definition of software test given by \cite{fink1997property}, which is ``a set of executions of a given program using different input data for each execution''. As such, I don't talk much about testing that syntactically changes the program in a set manner (e.g. mutation testing).
+\textit{Disclaimer.} For the duration of this paper I work with the definition of software test given by \cite{fink1997property}, which is ``a set of executions of a given program using different input data for each execution''. As such, I don't talk much about testing that syntactically changes the program code (e.g. mutation testing).
 
 \section{Formal verification to generate tests}
 
@@ -61,14 +61,14 @@ So, what are the pros and cons of this method of test case generation? The main 
 However, there are several cons. The main cons are actually not within the test generation step itself, but within the \textit{abstract-check-refine} loop the test generation relies on. There are flaws with each step of the loop:
 
 \begin{itemize}
-  \item The \textit{abstract} step suffers from the fact that mathematical abstractions \textbf{fail to capture some real-life properties} that may alter program behavior. One common problem is that we may assume infinite memory, although this is usually not the case.  
+  \item The \textit{abstract} step suffers from two flaws. One flaw is that the abstraction used is particular to imperative programs (such as \texttt{C}) and does not translate very well to other programming paradigms. Furthermore, abstractions have the flaw 
   \item The \textit{check} step is a semidecidable procedure: it can \textbf{potentially run forever}. This does not seem like a very desirable property when you want to prove correctness for \textit{any} program. The authors gloss over this point, and do so in subsequent papers, which is a major flaw in this type of loop.
   \item The \textit{refine} step is, fortunately, decidable. However, depending on what logical framework we are working in, SMT queries \textbf{can be very slow}, to the order of doubly-exponential time. Also, if the counterexample fails to be a valid program trace, the heuristics to design what new predicates should be added are empirical and, in particular, are \textbf{not universal}.  
 \end{itemize}
 
 \textit{Conclusions.} Formal verification is an extremely strong and desired tool. Knowing that your software is provably correct is the strongest possible guarantee, and generating robust test suites as a consequence of this guarantee is a great perk. However, as this test generation method relies on formal verification, it falls victim to the same problems of formal verification: the lack of a fully abstract model of all possible program behaviors and the computational inefficiency. 
 
-\section{The original property-based testing paradigm: a middle ground}
+\section{Property-based and metamorphic testing: a middle ground?}
 
 We learned from the previous section that relying on formal verification to generate our tests suffers from some serious issues. Where can we relax our approach to avoid the same issues that full-on formal verification face?
 
@@ -76,15 +76,23 @@ One place we can relax our approach is full automation. Instead of having our te
 
 \begin{itemize}
   \item The \textit{abstract} step now has a new specification language to specify safety properties to lower the level of abstraction. Furthermore, program \textit{slices}, or subprograms, are generated with respect to our property that the oracle can provide a first pass on how important certain program slices are to test.
-  \item The \textit{check} step generates tests based on the program specifications.
-  \item The \textit{refine} step is now done by the oracle. The oracle can provide their own test cases to fill in certain gaps in coverage that the generator fails to fill. Furthermore the oracle can ask the test generator to look at more fine- or coarse-grained program slices to make better-informed tests.
+  \item The \textit{check} step still generates tests based on the program specifications. But, whereas \cite{beyer2004generating} needed to translate abstract counterexamples to actual program variable assignments, this paper skips this step and uses the method of \textit{iterative contexts} to sequentially generate symbolic (input) variable assignments. Of course, the oracle can provide input here as well.
+  \item The \textit{refine} step now is a direct comparison between symbolic execution histories of the program and abstract program slices, which identifies gaps in test coverage. Oracle input is necessary here to identify and address these gaps.
 \end{itemize}
 
 Note that \cite{fink1997property} never explicitly mentions the \textit{abstract-check-refine} loop. In fact, Henzinger's paper comes five years after Fink's! Fink, instead, outlines an 8-step process of his test generation and evaluation paradigm. One of the outcomes of my reflection that Fink's 8-step process and Henzinger's 3-step loop serve basically the same purpose: provide an end-to-end outline of how to generate tests, evaluate them, and generate new tests based on coverage.
 
-This testing paradigm provides a middle ground between completely automated testing and completely human testing. It benefits from pros borrowing from both approaches. First, since we still work with abstractions of programs, we can potentially detect bugs in edge cases a human may not be able to detect. Second, we have humans evaluating whether or not certain program paths are worth testing or not, which can directly translate to our tests checking exactly what software engineers need confidence in. Third, we overcome the potential infinite program by having manual intervention when necessary. 
+This testing paradigm provides a middle ground between completely automated testing and completely human testing. It seems to be \textbf{the first paper describing an abstraction-guided semi-automated approach to testing}. It benefits from pros borrowing from both approaches. First, since we still work with abstractions of programs, we can potentially detect bugs in edge cases a human may not be able to detect. Second, we have humans evaluating whether or not certain program paths are worth testing or not, which can directly translate to our \textbf{tests checking exactly what software engineers need confidence in}. Third, we \textbf{overcome the potential nonterminating program} by having manual intervention when necessary. 
 
-But, there are still cons! The first main con is that 
+But, there are still cons! The first main con is that this work \textbf{lacks an implementation} for generic programs, and rather mostly describes a case study on a specific program. The authors admit that implementing their testing paradigm with good heuristics is a ``nontrivial problem'' \cite{fink1997property} and \textbf{leave it to future work to address these heuristic issues}. The other cons look similar to those of \cite{beyer2004generating}. First, the program abstractions they use still suffer from (1) \textbf{paradigm-specific restrictions} and (2) \textbf{semantic inexpressivity}. Next, although we remove semidecidability from the equation, we still have potential inefficiency. Where does this inefficiency stem from? Mostly, it stems from the fact that the \textbf{tests we generate are informed by the structure of the program} that we are testing. At this point, we have failed to separate \textit{concrete tests} that are assignments to program variables giving a certain output by going down a certain program execution path and \textit{symbolic tests} that are constraints on program specifications that make the program behave a certain way\footnote{Can you tell where I'm going with this?}.
+
+\subsection{The original \texttt{QuickCheck}}
+
+Nowadays, when we think of property-based testing, we think of \texttt{QuickCheck}. \texttt{QuickCheck} has been adapted to numerous different programming languages, and sees widescale usage in both research and industry. But what did the original implementation of \texttt{QuickCheck} \cite{claessen2000quickcheck} accomplish?
+
+\begin{enumerate}
+  \item It \textbf{automatically tested programs in Haskell, a functional language.} In   
+\end{enumerate}
 
 \section{Symbolic testing}
 

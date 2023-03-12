@@ -13,48 +13,50 @@ Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty publisher in beyer2004generating
 Warning--empty address in beyer2004generating
+Warning--empty publisher in claessen2000quickcheck
+Warning--empty address in claessen2000quickcheck
 Warning--empty address in hardin2010design
 Warning--empty publisher in henzinger2002lazy
 Warning--empty address in henzinger2002lazy
-You've used 7 entries,
+You've used 8 entries,
             5897 wiz_defined-function locations,
-            1370 strings with 16055 characters,
-and the built_in function-call counts, 8118 in all, are:
-= -- 1029
-> -- 287
+            1376 strings with 16276 characters,
+and the built_in function-call counts, 9395 in all, are:
+= -- 1168
+> -- 325
 < -- 0
-+ -- 93
-- -- 100
-* -- 547
-:= -- 830
-add.period$ -- 36
-call.type$ -- 7
-change.case$ -- 48
-chr.to.int$ -- 7
-cite$ -- 12
-duplicate$ -- 710
-empty$ -- 488
-format.name$ -- 116
-if$ -- 1947
++ -- 106
+- -- 116
+* -- 625
+:= -- 955
+add.period$ -- 41
+call.type$ -- 8
+change.case$ -- 54
+chr.to.int$ -- 8
+cite$ -- 15
+duplicate$ -- 838
+empty$ -- 576
+format.name$ -- 136
+if$ -- 2248
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 24
-newline$ -- 105
-num.names$ -- 56
-pop$ -- 258
+missing$ -- 29
+newline$ -- 112
+num.names$ -- 64
+pop$ -- 311
 preamble$ -- 1
-purify$ -- 111
+purify$ -- 126
 quote$ -- 0
-skip$ -- 267
+skip$ -- 318
 stack$ -- 0
-substring$ -- 571
-swap$ -- 85
+substring$ -- 674
+swap$ -- 99
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 153
-warning$ -- 5
-while$ -- 55
+type$ -- 183
+warning$ -- 7
+while$ -- 66
 width$ -- 0
-write$ -- 167
-(There were 5 warnings)
+write$ -- 183
+(There were 7 warnings)

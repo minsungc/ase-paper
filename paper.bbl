@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{7}
+\begin{thebibliography}{8}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -47,6 +47,18 @@
 \newblock \showarticletitle{Generating tests from counterexamples}. In
   \bibinfo{booktitle}{\emph{Proceedings. 26th International Conference on
   Software Engineering}}. IEEE, \bibinfo{pages}{326--335}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Claessen and Hughes}{Claessen and
+  Hughes}{2000}]%
+        {claessen2000quickcheck}
+\bibfield{author}{\bibinfo{person}{Koen Claessen} {and} \bibinfo{person}{John
+  Hughes}.} \bibinfo{year}{2000}\natexlab{}.
+\newblock \showarticletitle{QuickCheck: a lightweight tool for random testing
+  of Haskell programs}. In \bibinfo{booktitle}{\emph{Proceedings of the fifth
+  ACM SIGPLAN international conference on Functional programming}}.
+  \bibinfo{pages}{268--279}.
 \newblock
 
 
